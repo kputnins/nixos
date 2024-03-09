@@ -118,8 +118,16 @@
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
     gnomeExtensions.appindicator
-    gnomeExtensions.tactile
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.extension-list
+    gnomeExtensions.lock-keys
     gnomeExtensions.solaar-extension
+    gnomeExtensions.undecorate
+    gnomeExtensions.vitals
+    gnomeExtensions.native-window-placement
+    gnomeExtensions.removable-drive-menu
+    gnomeExtensions.workspace-indicator
+    gnomeExtensions.tactile
     nano
     micro
     eza

@@ -15,6 +15,12 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  # Force gnome dark mode
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
+
   # The home.packages option allows you to install Nix packages into your environment.
   home.packages = [
     # Adds the 'hello' command to your environment. It prints a friendly
