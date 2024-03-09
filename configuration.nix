@@ -131,6 +131,7 @@
     direnv
     git
     solaar
+    nodejs
     vscodium
     steam
     firefox
