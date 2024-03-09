@@ -144,7 +144,8 @@
     SUDO_EDITOR="micro";
 
     YSU_MESSAGE_POSITION="after"; # ZSH alias reminder
-    FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"; # To skip folders with fzf
+    # To skip some folders with fzf - don't forget to install fd
+    FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"; 
   };
 
   # Let Home Manager install and manage itself.

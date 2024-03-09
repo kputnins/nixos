@@ -125,6 +125,7 @@
     eza
     bat
     btop
+    fd
     fzf
     zsh
     direnv
