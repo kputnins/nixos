@@ -113,12 +113,18 @@
     gnome.gnome-tweaks
     gnomeExtensions.appindicator
     gnomeExtensions.tactile
+    gnomeExtensions.solaar-extension
     nano
     micro
+    eza
+    bat
+    btop
+    fzf
     zsh
     direnv
-    vscodium
     git
+    solaar
+    vscodium
     steam
     firefox
     google-chrome
@@ -138,6 +144,9 @@
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
   ];
+
+  # To get zsh tcompletion for system packages
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # List services that you want to enable:
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];

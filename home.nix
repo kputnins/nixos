@@ -15,12 +15,11 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+  # The home.packages option allows you to install Nix packages into your environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+    # Adds the 'hello' command to your environment. It prints a friendly
+    # "Hello, world!" when run.
+    pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -35,6 +34,69 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableAutosuggestions = true;
+    syntaxHighlighting.enable = true;
+
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "zap-zsh/zap-prompt"; }
+        { name = "zsh-users/zsh-syntax-highlighting"; }
+        { name = "zap-zsh/sudo"; }
+        { name = "chivalryq/git-alias"; }
+        { name = "zap-zsh/completions"; }
+        # { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
+      ];
+    };
+
+    shellAliases = {
+      code = "codium";
+
+      update = "sudo nixos-rebuild switch --flake ~/nixos/#default";
+
+      # git
+      g = "git";
+
+      # npm package managers
+      y = "yarn";
+      pp = "pnpm";
+      pps = "pnpm start";
+      ppi = "pnpm install";
+
+      # Colorize grep output (good for log files)
+      grep = "grep --color=auto";
+      egrep = "egrep --color=auto";
+      fgrep = "fgrep --color=auto";
+
+      # ls replacement
+      ls = "eza --icons";
+      lsa = "ls -al";
+      lsl = "ls -l";
+
+      # cat replacement
+      cat = "bat";
+
+      # htop replacement
+      htop = "btop";
+
+      # confirm before overwriting something
+      cp = "cp -i";
+      mv = "mv -i";
+      rm = "rm -i";
+
+      # easier to read disk
+      df = "df -h";     # human-readable sizes
+      free = "free -m"; # show sizes in MB
+    };
+
+    history.size = 10000;
+    history.path = "${config.xdg.dataHome}/zsh/history";
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -69,6 +131,7 @@
   home.sessionVariables = {
     EDITOR="micro";
     SUDO_EDITOR="micro";
+    FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git";
   };
 
   # Let Home Manager install and manage itself.
