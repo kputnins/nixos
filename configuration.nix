@@ -46,6 +46,12 @@
     LC_TIME = "lv_LV.UTF-8";
   };
 
+  # Fonts
+  fonts.packages = with pkgs; [
+    # Use 'FiraMono Nerd Font' in terminals for icon symbol support
+     (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
+  ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
