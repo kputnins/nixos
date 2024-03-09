@@ -49,6 +49,7 @@
         { name = "sindresorhus/pure"; }
         { name = "zsh-users/zsh-syntax-highlighting"; }
         { name = "zap-zsh/sudo"; }
+        { name = "MichaelAquilina/zsh-you-should-use"; }
         { name = "chivalryq/git-alias"; }
         { name = "zap-zsh/completions"; }
         # { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
@@ -141,7 +142,9 @@
   home.sessionVariables = {
     EDITOR="micro";
     SUDO_EDITOR="micro";
-    FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git";
+
+    YSU_MESSAGE_POSITION="after"; # ZSH alias reminder
+    FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"; # To skip folders with fzf
   };
 
   # Let Home Manager install and manage itself.
