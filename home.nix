@@ -45,7 +45,8 @@
       enable = true;
       plugins = [
         { name = "zsh-users/zsh-autosuggestions"; }
-        { name = "zap-zsh/zap-prompt"; }
+        { name = "mafredri/zsh-async"; }
+        { name = "sindresorhus/pure"; }
         { name = "zsh-users/zsh-syntax-highlighting"; }
         { name = "zap-zsh/sudo"; }
         { name = "chivalryq/git-alias"; }
@@ -96,6 +97,15 @@
 
     history.size = 10000;
     history.path = "${config.xdg.dataHome}/zsh/history";
+  };
+
+  programs.git = {
+    enable = true;
+    userName  = "kputnins";
+    userEmail = "kaspars.putnins19@gmail.com";
+    extraConfig = {
+      push = { autoSetupRemote = true; };
+    };
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
