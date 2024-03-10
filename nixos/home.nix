@@ -65,7 +65,7 @@
     shellAliases = {
       code = "codium";
 
-      update = "sudo nixos-rebuild switch --flake ~/nixos/#default";
+      update = "sudo nixos-rebuild switch --flake ~/.config/kp/nixos/#default";
 
       # git
       g = "git";
@@ -113,6 +113,16 @@
     extraConfig = {
       push = { autoSetupRemote = true; };
     };
+  };
+
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    # NOTE: disabled, because causes breakage often
+    /* config.global = {
+      strict_env = true;
+    }; */
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

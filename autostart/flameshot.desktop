@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Flameshot
+GenericName=Flameshot screenshot utility
+Comment=Starts flameshot the correct way so that it works on Gnome Wayland
+Exec=/home/kp/.config/scripts/flameshot.sh
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true

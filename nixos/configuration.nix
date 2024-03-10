@@ -144,6 +144,11 @@
     steam
     firefox
     google-chrome
+    discord
+    vlc
+    smplayer
+    flameshot
+    deluge
   ];
 
   programs.steam = {
@@ -165,7 +170,22 @@
   environment.pathsToLink = [ "/share/zsh" ];
 
   # List services that you want to enable:
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services = {
+    gnome.gnome-keyring.enable = true;
+
+    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
+    redshift = {
+      enable = true;
+      latitude = "56.97";
+      longitude = "24.11";
+      temperature = {
+        # orange = 1000, white = 5000
+        day = 5000;
+        night = 2300;
+      };
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
