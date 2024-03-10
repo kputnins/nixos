@@ -31,6 +31,12 @@
   # Set your time zone.
   time.timeZone = "Europe/Riga";
 
+  location = {
+    # Riga City
+    latitude = 56.9677;
+    longitude = 24.1056;
+  };
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -177,8 +183,6 @@
 
     redshift = {
       enable = true;
-      latitude = "56.97";
-      longitude = "24.11";
       temperature = {
         # orange = 1000, white = 5000
         day = 5000;
