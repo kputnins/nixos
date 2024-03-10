@@ -18,6 +18,13 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # For amd PRO
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
+  hardware.opengl.driSupport = true; # This is already enabled by default
+  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
+
   networking.hostName = "KP-NIXOS"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -60,6 +67,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -76,6 +84,7 @@
 
   # Enables bluetooth
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   
   # Enable sound with pipewire.
   sound.enable = true;
@@ -103,7 +112,15 @@
     description = "Kaspars Putniņš";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
+      # user specific apckages
+    ];
+  };
+  users.users.liene = {
+    isNormalUser = true;
+    description = "Liene Putniņa";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      # user specific apckages
     ];
   };
   users.defaultUserShell = pkgs.zsh;
@@ -136,6 +153,7 @@
     gnomeExtensions.tactile
     nano
     micro
+    clinfo
     eza
     bat
     btop
@@ -148,6 +166,7 @@
     nodejs
     vscodium
     steam
+    lutris
     firefox
     google-chrome
     discord
