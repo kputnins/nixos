@@ -159,6 +159,8 @@
     EDITOR="micro";
     SUDO_EDITOR="micro";
 
+    QT_QPA_PLATFORM="wayland";
+
     YSU_MESSAGE_POSITION="after"; # ZSH alias reminder
     # To skip some folders with fzf - don't forget to install fd
     FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"; 
