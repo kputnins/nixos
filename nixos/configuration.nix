@@ -12,10 +12,21 @@
     ];
 
   # Bootloader.
+  boot.loader.systemd-boot.enable = false;
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
+  boot.loader.grub.extraEntries = ''
+    menuentry "Reboot" {
+        reboot
+    }
+    menuentry "Poweroff" {
+        halt
+    }
+  '';
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 
@@ -154,6 +165,7 @@
     gnomeExtensions.removable-drive-menu
     gnomeExtensions.workspace-indicator
     gnomeExtensions.tactile
+    efibootmgr
     nano
     micro
     clinfo
@@ -177,6 +189,7 @@
     smplayer
     flameshot
     deluge
+    onlyoffice-bin
   ];
 
   programs.steam = {

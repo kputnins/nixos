@@ -1,3 +1,5 @@
+# Setting up
+
 To update nixos with the latest confuguration run:
 
 ```sh
