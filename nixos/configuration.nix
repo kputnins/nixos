@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
@@ -76,7 +77,7 @@
   # Fonts
   fonts.packages = with pkgs; [
     # Use 'FiraMono Nerd Font' in terminals for icon symbol support
-     (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
   ];
 
   # Enable the X11 windowing system.
@@ -99,7 +100,7 @@
   # Enables bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -141,10 +142,10 @@
 
   # Home manager
   home-manager = {
-  	extraSpecialArgs = { inherit inputs; };
-  	users = {
-  	  "kp" = import ./home.nix;
-  	};
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "kp" = import ./home.nix;
+    };
   };
 
   # Allow unfree packages
@@ -166,6 +167,7 @@
     gnomeExtensions.workspace-indicator
     gnomeExtensions.tactile
     efibootmgr
+    nixpkgs-fmt
     nano
     micro
     clinfo

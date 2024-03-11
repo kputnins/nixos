@@ -98,7 +98,7 @@
       rm = "rm -i";
 
       # easier to read disk
-      df = "df -h";     # human-readable sizes
+      df = "df -h"; # human-readable sizes
       free = "free -m"; # show sizes in MB
     };
 
@@ -108,7 +108,7 @@
 
   programs.git = {
     enable = true;
-    userName  = "kputnins";
+    userName = "kputnins";
     userEmail = "kaspars.putnins19@gmail.com";
     extraConfig = {
       push = { autoSetupRemote = true; };
@@ -156,14 +156,14 @@
   #  /etc/profiles/per-user/kp/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR="micro";
-    SUDO_EDITOR="micro";
+    EDITOR = "micro";
+    SUDO_EDITOR = "micro";
 
-    QT_QPA_PLATFORM="wayland";
+    QT_QPA_PLATFORM = "wayland";
 
-    YSU_MESSAGE_POSITION="after"; # ZSH alias reminder
+    YSU_MESSAGE_POSITION = "after"; # ZSH alias reminder
     # To skip some folders with fzf - don't forget to install fd
-    FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"; 
+    FZF_DEFAULT_COMMAND = "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git";
   };
 
   # Let Home Manager install and manage itself.
