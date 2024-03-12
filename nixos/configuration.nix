@@ -175,6 +175,7 @@
     bat
     btop
     fd
+    bc
     fzf
     zsh
     direnv
