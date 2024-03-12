@@ -183,7 +183,6 @@
     zsh
     direnv
     git
-    solaar
     nodejs
     vscodium
     wine
@@ -200,6 +199,8 @@
   ];
 
   programs.dconf.enable = true;
+
+  programs.solaar.enable = true;
 
   programs.steam = {
     enable = true;
