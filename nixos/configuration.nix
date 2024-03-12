@@ -184,6 +184,7 @@
     solaar
     nodejs
     vscodium
+    wine
     steam
     lutris
     firefox
