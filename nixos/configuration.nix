@@ -155,6 +155,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
+    gnome.dconf-editor
     gnomeExtensions.appindicator
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.extension-list
@@ -194,6 +195,8 @@
     deluge
     onlyoffice-bin
   ];
+
+  programs.dconf.enable = true;
 
   programs.steam = {
     enable = true;

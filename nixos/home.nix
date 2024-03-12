@@ -15,17 +15,12 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # Force gnome dark mode
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
-
   # The home.packages option allows you to install Nix packages into your environment.
   home.packages = [
     # Adds the 'hello' command to your environment. It prints a friendly
     # "Hello, world!" when run.
     pkgs.hello
+    pkgs.dconf
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -164,6 +159,70 @@
     YSU_MESSAGE_POSITION = "after"; # ZSH alias reminder
     # To skip some folders with fzf - don't forget to install fd
     FZF_DEFAULT_COMMAND = "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git";
+  };
+
+  # Gnome dconf settings
+  dconf = {
+    enable = true;
+  };
+  dconf.settings = {
+    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    "org/gnome/nautilus/preferences".default-folder-viewer = "list-view";
+    "org/gnome/nautilus/list-view" = {
+      use-tree-view = true;
+      default-zoom-level = "small";
+    };
+
+    "org/gtk/gtk4/settings/file-chooser" = {
+      sort-directories-first = true;
+      show-hidden = true;
+      view-type = "list";
+    };
+
+    # "org/gnome/desktop/wm/keybindings" = {
+    #   switch-to-workspace-left = [ "<Super>a" ];
+    #   switch-to-workspace-right = [ "<Super>d" ];
+    #   move-to-workspace-left = [ "<Shift><Super>a" ];
+    #   move-to-workspace-right = [ "<Shift><Super>d" ];
+    #   switch-to-workspace-1 = [ "<Super>1" ];
+    #   switch-to-workspace-2 = [ "<Super>2" ];
+    #   switch-to-workspace-3 = [ "<Super>3" ];
+    #   switch-to-workspace-4 = [ "<Super>4" ];
+    #   switch-input-source = [ "<Shift><Alt>" ];
+    #   switch-input-source-backward = mkEmptyArray type.string;
+    #   activate-window-menu = [ "Menu" ];
+    #   close = [ "<Shift><Super>w" ];
+    #   maximize = [ "<Super>f" ];
+    #   toggle-fullscreen = [ "<Shift><Super>f" ];
+    # };
+
+    # "org/gnome/shell/keybindings" = {
+    #   # Following binds are replaced by the ones above.
+    #   toggle-application-view = mkEmptyArray type.string;
+    #   switch-to-application-1 = mkEmptyArray type.string;
+    #   switch-to-application-2 = mkEmptyArray type.string;
+    #   switch-to-application-3 = mkEmptyArray type.string;
+    #   switch-to-application-4 = mkEmptyArray type.string;
+
+    #   show-screen-recording-ui = mkEmptyArray type.string;
+    #   screenshot = mkEmptyArray type.string;
+    #   show-screenshot-ui = [ "<Shift><Super>s" ];
+    #   screenshot-window = mkEmptyArray type.string;
+    # };
+
+    "org/gnome/shell".enabled-extensions = [
+      "tactile@lundal.io"
+      "appindicatorsupport@rgcjonas.gmail.com"
+      "clipboard-indicator@tudmotu.com"
+      "extension-list@tu.berry"
+      "lockkeys@vaina.lt"
+      "native-window-placement@gnome-shell-extensions.gcampax.github.com"
+      "drive-menu@gnome-shell-extensions.gcampax.github.com"
+      "solaar-extension@sidevesh"
+      "undecorate@sun.wxg@gmail.com"
+      "Vitals@CoreCoding.com"
+      "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
+    ];
   };
 
   # Let Home Manager install and manage itself.
