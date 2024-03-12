@@ -139,7 +139,10 @@
     "org/gnome/desktop/datetime" = {
       automatic-timezone = true;
     };
-    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark"; # Dark theme
+      gtk-theme = "adw-gtk3-dark"; # Dark theme for legacy gdk apps
+    };
     "org/gnome/desktop/peripherals".numlock-state = true;
     "org/gnome/desktop/privacy" = {
       remove-old-temp-files = true;

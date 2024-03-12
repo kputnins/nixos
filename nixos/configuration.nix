@@ -156,6 +156,8 @@
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
     gnome.dconf-editor
+    gnome.gnome-themes-extra
+    adw-gtk3 # gdk3 dark theme
     gnomeExtensions.appindicator
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.extension-list
