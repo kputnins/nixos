@@ -129,18 +129,66 @@
     enable = true;
   };
   dconf.settings = {
+    "org/gnome/desktop/background" = {
+      color-shading-type = "solid";
+      picture-uri = "";
+      picture-uri-dark = "";
+      primary-color = "black";
+      secondary-color = "black";
+    };
+    "org/gnome/desktop/datetime" = {
+      automatic-timezone = true;
+    };
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    "org/gnome/desktop/peripherals".numlock-state = true;
+    "org/gnome/desktop/privacy" = {
+      remove-old-temp-files = true;
+      remove-old-trash-files = true;
+    };
+    "org/gnome/desktop/screensaver".lock-enabled = false;
     "org/gnome/nautilus/preferences".default-folder-viewer = "list-view";
     "org/gnome/nautilus/list-view" = {
       use-tree-view = true;
       default-zoom-level = "small";
     };
-
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-enabled = true;
+      night-light-last-coordinat3es = "(56.942499772841622, 24.097799999999999)";
+      night-light-temperature = 3700;
+    };
+    "org/gnome/shell/weather" = {
+      autonatic-location = true;
+    };
+    "org/gnome/shell" = {
+      enabled-extensions = [
+        "tactile@lundal.io"
+        "appindicatorsupport@rgcjonas.gmail.com"
+        "clipboard-indicator@tudmotu.com"
+        "extension-list@tu.berry"
+        "lockkeys@vaina.lt"
+        "native-window-placement@gnome-shell-extensions.gcampax.github.com"
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "solaar-extension@sidevesh"
+        "undecorate@sun.wxg@gmail.com"
+        "Vitals@CoreCoding.com"
+        "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
+      ];
+      favorite-apps = [
+        "google-chrome.desktop"
+        "codium.desktop"
+        "org.gnome.Console.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
+    };
+    "org/gnome/system/location" = {
+      enabled = true;
+    };
     "org/gtk/gtk4/settings/file-chooser" = {
       sort-directories-first = true;
       show-hidden = true;
       view-type = "list";
     };
+
 
     # "org/gnome/desktop/wm/keybindings" = {
     #   switch-to-workspace-left = [ "<Super>a" ];
@@ -172,20 +220,6 @@
     #   show-screenshot-ui = [ "<Shift><Super>s" ];
     #   screenshot-window = mkEmptyArray type.string;
     # };
-
-    "org/gnome/shell".enabled-extensions = [
-      "tactile@lundal.io"
-      "appindicatorsupport@rgcjonas.gmail.com"
-      "clipboard-indicator@tudmotu.com"
-      "extension-list@tu.berry"
-      "lockkeys@vaina.lt"
-      "native-window-placement@gnome-shell-extensions.gcampax.github.com"
-      "drive-menu@gnome-shell-extensions.gcampax.github.com"
-      "solaar-extension@sidevesh"
-      "undecorate@sun.wxg@gmail.com"
-      "Vitals@CoreCoding.com"
-      "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
-    ];
   };
 
   # Let Home Manager install and manage itself.
