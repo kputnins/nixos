@@ -41,8 +41,10 @@
 
     shellAliases = {
       code = "codium";
-
-      update = "sudo nixos-rebuild switch --flake ~/.config/kp/nixos/#default";
+      nix-update = "sudo nixos-rebuild switch --flake ~/.config/kp/nixos/#default";
+      nix-clean = "nix-collect-garbage && sudo nixos-rebuild boot --flake ~/.config/kp/nixos/#default";
+      nix-gen-list = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+      nix-gen-clean = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d && nix-collect-garbage && sudo nixos-rebuild boot --flake ~/.config/kp/nixos/#default";
 
       # git
       g = "git";

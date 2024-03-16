@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.nix-gc-env.nixosModules.default
       inputs.home-manager.nixosModules.default
     ];
 
@@ -32,6 +33,12 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    delete_generations = "+7"; # Option added by nix-gc-env
+  };
 
   # For amd PRO
   hardware.opengl.extraPackages = with pkgs; [
