@@ -59,7 +59,7 @@
       fgrep = "fgrep --color=auto";
 
       # ls replacement
-      ls = "eza --icons";
+      ls = "eza --icons=always";
       lsa = "ls -al";
       lsl = "ls -l";
 
