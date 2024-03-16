@@ -171,6 +171,7 @@
     gnomeExtensions.tactile
     efibootmgr
     nixpkgs-fmt
+    home-manager
     nano
     micro
     clinfo
@@ -191,8 +192,16 @@
     firefox
     google-chrome
     discord
+    ffmpeg
     vlc
-    smplayer
+    mplayer
+    mpv
+    # smplayer wayland fix
+    (writeScriptBin "smplayer" ''
+      #!/bin/sh
+      export QT_QPA_PLATFORM=xcb
+      exec ${smplayer}/bin/smplayer "$@"
+    '')
     flameshot
     deluge
     onlyoffice-bin
