@@ -134,6 +134,19 @@
     '';
   };
 
+  # Solaar rule for MX MAster S3 thumb button
+  home.file.".config/solaar/rules.yaml" = {
+    text = ''
+      %YAML 1.3
+      ---
+      - Key: [Mouse Gesture Button, pressed]
+      - KeyPress:
+        - Super_L
+        - click
+      ...
+    '';
+  };
+
   home.sessionVariables = {
     EDITOR = "micro";
     SUDO_EDITOR = "micro";
