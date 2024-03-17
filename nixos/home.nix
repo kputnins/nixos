@@ -184,6 +184,17 @@
       remove-old-trash-files = true;
     };
     "org/gnome/desktop/screensaver".lock-enabled = false;
+    "org/gnome/desktop/wm/keybindings" = {
+      move-to-monitor-left = [ ];
+      move-to-monitor-right = [ ];
+      move-to-monitor-up = [ ];
+      move-to-monitor-down = [ ];
+      switch-to-workspace-left = [ "<Super>Left" ];
+      switch-to-workspace-right = [ "<Super>Right" ];
+      move-to-workspace-left = [ "<Shift><Super>Left" ];
+      move-to-workspace-right = [ "<Shift><Super>Right" ];
+      close = [ "<Shift><Control>w" ];
+    };
     "org/gnome/nautilus/preferences".default-folder-viewer = "list-view";
     "org/gnome/nautilus/list-view" = {
       use-tree-view = true;
@@ -226,38 +237,6 @@
       show-hidden = true;
       view-type = "list";
     };
-
-
-    # "org/gnome/desktop/wm/keybindings" = {
-    #   switch-to-workspace-left = [ "<Super>a" ];
-    #   switch-to-workspace-right = [ "<Super>d" ];
-    #   move-to-workspace-left = [ "<Shift><Super>a" ];
-    #   move-to-workspace-right = [ "<Shift><Super>d" ];
-    #   switch-to-workspace-1 = [ "<Super>1" ];
-    #   switch-to-workspace-2 = [ "<Super>2" ];
-    #   switch-to-workspace-3 = [ "<Super>3" ];
-    #   switch-to-workspace-4 = [ "<Super>4" ];
-    #   switch-input-source = [ "<Shift><Alt>" ];
-    #   switch-input-source-backward = mkEmptyArray type.string;
-    #   activate-window-menu = [ "Menu" ];
-    #   close = [ "<Shift><Super>w" ];
-    #   maximize = [ "<Super>f" ];
-    #   toggle-fullscreen = [ "<Shift><Super>f" ];
-    # };
-
-    # "org/gnome/shell/keybindings" = {
-    #   # Following binds are replaced by the ones above.
-    #   toggle-application-view = mkEmptyArray type.string;
-    #   switch-to-application-1 = mkEmptyArray type.string;
-    #   switch-to-application-2 = mkEmptyArray type.string;
-    #   switch-to-application-3 = mkEmptyArray type.string;
-    #   switch-to-application-4 = mkEmptyArray type.string;
-
-    #   show-screen-recording-ui = mkEmptyArray type.string;
-    #   screenshot = mkEmptyArray type.string;
-    #   show-screenshot-ui = [ "<Shift><Super>s" ];
-    #   screenshot-window = mkEmptyArray type.string;
-    # };
   };
 
   # Let Home Manager install and manage itself.
