@@ -192,7 +192,6 @@
     direnv
     git
     nodejs
-    vscodium
     wine
     steam
     lutris
