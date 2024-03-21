@@ -1,33 +1,91 @@
 // ~/.config/VSCodium/User/keybindings.json
 [
-  // Toggle fold
+  // Navigation
+  {
+    "key": "ctrl+shift+a",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+
+  // GIT sidebar
   {
     "key": "ctrl+g",
-    "command": "editor.toggleFold",
-    "when": "editorTextFocus && foldingEnabled"
+    "command": "workbench.view.scm"
+  },
+
+  // File explorer
+  {
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+e"
   },
   {
-    "key": "ctrl+k ctrl+l",
-    "command": "-editor.toggleFold",
-    "when": "editorTextFocus && foldingEnabled"
+    "command": "workbench.files.action.focusFilesExplorer",
+    "key": "ctrl+e",
+    "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+g",
-    "command": "-workbench.action.gotoLine"
-  },
-  // Replace
-  {
-    "key": "ctrl+r",
-    "command": "-workbench.action.openRecent"
+    "command": "renameFile",
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "ctrl+r",
-    "command": "editor.action.startFindReplaceAction",
-    "when": "editorFocus || editorIsOpen"
+    "command": "filesExplorer.copy",
+    "key": "c",
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "ctrl+h",
-    "command": "-editor.action.startFindReplaceAction",
-    "when": "editorFocus || editorIsOpen"
+    "command": "filesExplorer.paste",
+    "key": "p",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "command": "deleteFile",
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+
+  // expand-region extension
+  {
+    "key": "ctrl+shift+.",
+    "command": "expand_region"
+  },
+  {
+    "key": "ctrl+shift+,",
+    "command": "undo_expand_region"
+  },
+
+  // EXTRA
+  {
+    "key": "ctrl+shift+5",
+    "command": "editor.emmet.action.matchTag"
   }
 ]

@@ -10,6 +10,13 @@
     "eamodio.gitlens",
     "jock.svg",
     "streetsidesoftware.code-spell-checker",
-    "github.copilot"
+    "github.copilot",
+    "vscodevim.vim",
+    "andenetalexander.vim-cheatsheet",
+    "edwinhuish.better-comments-next",
+    "vscode-icons-team.vscode-icons",
+    "letrieu.expand-region",
+    "meganrogge.template-string-converter",
+    "usernamehw.errorlens"
   ]
 }
