@@ -17,6 +17,7 @@
   home.packages = [
     pkgs.dconf
     pkgs.showmethekey
+    pkgs.librecad
   ];
 
   programs.zsh = {
@@ -151,6 +152,8 @@
     SUDO_EDITOR = "micro";
 
     QT_QPA_PLATFORM = "wayland";
+    QT_STYLE_OVERRIDE = "adwaita-dark";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
 
     YSU_MESSAGE_POSITION = "after"; # ZSH alias reminder
     # To skip some folders with fzf - don't forget to install fd

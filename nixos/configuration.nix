@@ -190,6 +190,8 @@
     fzf
     zsh
     direnv
+    libsForQt5.qt5ct
+    adwaita-qt
     git
     nodejs
     wine
