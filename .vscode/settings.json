@@ -137,6 +137,10 @@
     {
       "before": ["g", "h"],
       "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "before": ["<Esc>"],
+      "commands": [":nohl"]
     }
   ],
   "vim.visualModeKeyBindings": [

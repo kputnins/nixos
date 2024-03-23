@@ -12,7 +12,7 @@
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+shift+j",
+    "key": "ctrl+j",
     "command": "workbench.action.togglePanel"
   },
   {
@@ -61,11 +61,6 @@
     "key": "n",
     "command": "explorer.newFile",
     "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "key": "shift+n",
-    "command": "explorer.newFolder",
-    "when": "explorerViewletFocus"
   },
   {
     "command": "deleteFile",
