@@ -25,6 +25,17 @@
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus"
   },
+  // Navigate through terminal tabs
+  {
+    "key": "ctrl+shift+l",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+h",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
 
   // GIT sidebar
   {
