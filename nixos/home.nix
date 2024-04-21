@@ -164,6 +164,22 @@
     '';
   };
 
+  # Flameshot options
+  home.file.".config/flameshot/flameshot.conf" = {
+    text = ''
+      [General]
+      buttons=@Variant(\0\0\0\x7f\0\0\0\vQList<int>\0\0\0\0\x16\0\0\0\0\0\0\0\x1\0\0\0\x2\0\0\0\x3\0\0\0\x4\0\0\0\x5\0\0\0\x6\0\0\0\x12\0\0\0\xf\0\0\0\x16\0\0\0\x13\0\0\0\a\0\0\0\b\0\0\0\t\0\0\0\x10\0\0\0\n\0\0\0\v\0\0\0\x17\0\0\0\xe\0\0\0\f\0\0\0\x14\0\0\0\x15)
+      contrastOpacity=188
+      drawThickness=3
+      saveAsFileExtension=jpeg
+      savePath=/home/kp/Pictures/Screenshots
+      uiColor=#750097
+      undoLimit=104
+      uploadClientSecret=
+      useJpgForClipboard=false
+    '';
+  };
+
   # Autostart solaar
   home.file.".config/autostart/solaar.desktop" = {
     source = pkgs.writeText "solaar.desktop" ''
