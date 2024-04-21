@@ -170,6 +170,7 @@
   "gitlens.statusBar.enabled": false,
   "gitlens.defaultTimeFormat": "hh:mm",
   "gitlens.defaultDateShortFormat": "DD.MM.YY",
+  "gitlens.telemetry.enabled": false,
 
   // copilot
   "github.copilot.advanced": {
