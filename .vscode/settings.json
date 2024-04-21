@@ -150,7 +150,9 @@
     {
       "before": ["<Esc>"],
       "commands": [":nohl"]
-    }, // Disable "J" key
+    },
+
+    // Disable "J" key
     { "before": ["J"], "commands": [] }
   ],
   "vim.visualModeKeyBindings": [
