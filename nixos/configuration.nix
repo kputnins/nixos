@@ -197,6 +197,7 @@
     wine
     steam
     lutris
+    krita
     firefox
     google-chrome
     discord
