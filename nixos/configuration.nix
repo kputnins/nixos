@@ -194,6 +194,7 @@
     adwaita-qt
     git
     nodejs
+    corepack
     wine
     steam
     lutris
