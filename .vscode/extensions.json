@@ -17,6 +17,8 @@
     "vscode-icons-team.vscode-icons",
     "letrieu.expand-region",
     "meganrogge.template-string-converter",
-    "usernamehw.errorlens"
+    "usernamehw.errorlens",
+    "pranaygp.vscode-css-peek",
+    "kang-sw.html-css-class-completion-everywhere"
   ]
 }

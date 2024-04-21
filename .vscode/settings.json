@@ -196,5 +196,17 @@
   ],
 
   // error lens
-  "errorLens.fontSize": "12px"
+  "errorLens.fontSize": "12px",
+
+  // css peek
+  "cssPeek.supportTags": false,
+  "cssPeek.peekToExclude": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/dist/**"
+  ],
+
+  // css intellisense
+  "html-css-class-completion.includeGlobPattern": "**/*.{css,html}",
+  "html-css-class-completion.excludeGlobPattern": "**/node_modules/**"
 }

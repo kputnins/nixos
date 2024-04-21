@@ -149,6 +149,21 @@
     '';
   };
 
+  # To enable MS extension marketplace in VS Codium
+  # https://github.com/VSCodium/vscodium/blob/master/docs/index.md#how-to-use-the-open-vsx-registry
+  home.file.".config/VSCodium/product.json" = {
+    text = ''
+      {
+        "extensionsGallery": {
+          "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+          "itemUrl": "https://marketplace.visualstudio.com/items",
+          "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+          "controlUrl": ""
+        }
+      }
+    '';
+  };
+
   # Autostart solaar
   home.file.".config/autostart/solaar.desktop" = {
     source = pkgs.writeText "solaar.desktop" ''
