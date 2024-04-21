@@ -105,6 +105,8 @@
       gdb
       gcc
       clang
+      # python
+      python3
     ]);
   };
 
