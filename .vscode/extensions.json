@@ -19,6 +19,8 @@
     "meganrogge.template-string-converter",
     "usernamehw.errorlens",
     "pranaygp.vscode-css-peek",
-    "kang-sw.html-css-class-completion-everywhere"
+    "kang-sw.html-css-class-completion-everywhere",
+    "rust-lang.rust-analyzer",
+    "christian-kohler.path-intellisense"
   ]
 }
