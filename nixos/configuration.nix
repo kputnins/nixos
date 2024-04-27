@@ -200,7 +200,12 @@
     lutris
     krita
     firefox
-    google-chrome
+    (google-chrome.override {
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland" # Fixes black screen on wayland
+      ];
+    })
     discord
     ffmpeg
     vlc
