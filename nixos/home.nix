@@ -14,10 +14,11 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your environment.
-  home.packages = [
-    pkgs.dconf
-    pkgs.showmethekey
-    pkgs.librecad
+  home.packages = with pkgs; [
+    dconf
+    showmethekey
+    librecad
+    corectrl
   ];
 
   programs.zsh = {

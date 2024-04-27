@@ -132,7 +132,7 @@
   users.users.kp = {
     isNormalUser = true;
     description = "Kaspars Putniņš";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "corectrl" ];
     packages = with pkgs; [
       # user specific apckages
     ];
@@ -229,6 +229,8 @@
   };
 
   programs.zsh.enable = true;
+
+  programs.corectrl.enable = true;
 
   # LD fix
   programs.nix-ld.enable = true;
