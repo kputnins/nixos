@@ -1,7 +1,7 @@
 // ~/.config/VSCodium/User/settings.json
 {
   // Make the editor more minimal
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
   "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "errorLens.errorBackground": "#e4545414",
