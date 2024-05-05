@@ -195,10 +195,12 @@
     git
     nodejs
     corepack
+    p7zip
     wineWowPackages.stable
     winetricks
     steam
     lutris
+    postman
     krita
     firefox
     (google-chrome.override {
@@ -264,11 +266,11 @@
     };
   };
 
+  # Firewall
+  networking.firewall.enable = true;
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 5173 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
