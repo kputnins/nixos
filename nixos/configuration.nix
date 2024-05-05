@@ -195,7 +195,8 @@
     git
     nodejs
     corepack
-    wine
+    wineWowPackages.stable
+    winetricks
     steam
     lutris
     krita
