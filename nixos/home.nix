@@ -27,14 +27,6 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
-      function zvm_after_init() {
-        zvm_bindkey viins '^@' autosuggest-accept
-        zvm_bindkey viins "^k" history-search-backward
-        zvm_bindkey viins "^j" history-search-forward
-      }
-    '';
-
     plugins = [
       {
         name = "vi-mode";
@@ -54,8 +46,26 @@
         { name = "MichaelAquilina/zsh-you-should-use"; }
         { name = "chivalryq/git-alias"; }
         { name = "zap-zsh/completions"; }
+        { name = "Aloxaf/fzf-tab"; }
       ];
     };
+
+    initExtra = ''
+      function zvm_after_init() {
+        zvm_bindkey viins '^@' autosuggest-accept
+        zvm_bindkey viins "^k" history-search-backward
+        zvm_bindkey viins "^j" history-search-forward
+        zvm_bindkey viins "^r" fzf-history-widget
+      }
+
+      zstyle ':completion::*:ls::*' fzf-completion-opts --preview='eval head {1}'
+      zstyle ':completion::*:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-completion-opts --preview='eval eval echo {1}'
+      zstyle ':completion::*:git::git,add,*' fzf-completion-opts --preview='git -c color.status=always status --short'
+      zstyle ':completion:*' menu no
+
+      eval "$(fzf --zsh)"
+    '';
+
 
     shellAliases = {
       code = "codium";
