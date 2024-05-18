@@ -2,7 +2,7 @@
 {
   // Make the editor more minimal
   "workbench.statusBar.visible": true,
-  "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.location": "top",
   "workbench.colorCustomizations": {
     "errorLens.errorBackground": "#e4545414",
     "errorLens.errorForeground": "#fc4931bb",
