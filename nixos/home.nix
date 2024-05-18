@@ -27,6 +27,14 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    initExtra = ''
+      function zvm_after_init() {
+        zvm_bindkey viins '^@' autosuggest-accept
+        zvm_bindkey viins "^k" history-search-backward
+        zvm_bindkey viins "^j" history-search-forward
+      }
+    '';
+
     plugins = [
       {
         name = "vi-mode";
@@ -93,6 +101,15 @@
 
     history.size = 10000;
     history.path = "${config.xdg.dataHome}/zsh/history";
+  };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    extraConfig = ''
+      set number relativenumber
+    '';
   };
 
   programs.git = {
