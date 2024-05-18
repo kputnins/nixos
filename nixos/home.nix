@@ -253,7 +253,7 @@
       switch-to-workspace-right = [ "<Super>Right" ];
       move-to-workspace-left = [ "<Shift><Super>Left" ];
       move-to-workspace-right = [ "<Shift><Super>Right" ];
-      close = [ "<Shift><Control>w" ];
+      close = [ "<Super>q" ];
     };
     "org/gnome/nautilus/preferences".default-folder-viewer = "list-view";
     "org/gnome/nautilus/list-view" = {
