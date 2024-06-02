@@ -198,6 +198,7 @@
     p7zip
     wineWowPackages.stable
     winetricks
+    mangohud
     steam
     lutris
     postman
