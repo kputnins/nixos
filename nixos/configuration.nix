@@ -198,10 +198,12 @@
     p7zip
     wineWowPackages.stable
     winetricks
+    protontricks
     mangohud
     steam
     lutris
     postman
+    audacity
     krita
     firefox
     (google-chrome.override {
