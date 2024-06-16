@@ -12,13 +12,15 @@
 
     nix-gc-env.url = "github:Julow/nix-gc-env";
 
+    musnix.url = "github:musnix/musnix";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, solaar, ... }@inputs:
+  outputs = { self, nixpkgs, solaar, musnix, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -30,6 +32,7 @@
           ./configuration.nix
           solaar.nixosModules.default
           inputs.home-manager.nixosModules.default
+          musnix.nixosModules.musnix
         ];
       };
 
