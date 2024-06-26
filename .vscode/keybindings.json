@@ -12,6 +12,16 @@
     "when": "terminalFocus"
   },
   {
+    "key": "ctrl+shift+right",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
     "key": "ctrl+j",
     "command": "workbench.action.togglePanel"
   },
