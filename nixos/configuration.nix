@@ -122,7 +122,7 @@
   };
 
   # Musnix for audio production
-  musnix.enable = true;
+  # musnix.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -201,6 +201,7 @@
     protontricks
     mangohud
     steam
+    gamescope
     lutris
     postman
     audacity
@@ -273,6 +274,13 @@
       };
     };
   };
+
+  systemd.user.extraConfig = "DefaultLimitNOFILE=524288";
+
+  security.pam.loginLimits = [
+    { domain = "*"; item = "nofile"; type = "-"; value = "524288"; }
+    { domain = "*"; item = "memlock"; type = "-"; value = "524288"; }
+  ];
 
   # Firewall
   networking.firewall.enable = true;
