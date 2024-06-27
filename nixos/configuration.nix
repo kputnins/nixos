@@ -41,11 +41,12 @@
   };
 
   # For amd PRO
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
     rocmPackages.clr.icd
   ];
-  hardware.opengl.driSupport = true; # This is already enabled by default
-  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
+  hardware.graphics = {
+    enable32Bit = true;
+  };
 
   networking.hostName = "KP-NIXOS"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
