@@ -220,6 +220,7 @@
       ];
     })
     discord
+    spotify
     ffmpeg
     vlc
     mplayer
