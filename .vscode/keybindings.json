@@ -35,6 +35,12 @@
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus"
   },
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+
   // Navigate through terminal tabs
   {
     "key": "ctrl+shift+l",
