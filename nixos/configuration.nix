@@ -161,9 +161,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
-    gnome.dconf-editor
-    gnome.gnome-themes-extra
+    gnome-tweaks
+    dconf-editor
+    gnome-themes-extra
     adw-gtk3 # gdk3 dark theme
     gnomeExtensions.appindicator
     gnomeExtensions.clipboard-indicator
@@ -189,6 +189,7 @@
     bc
     fzf
     zsh
+    watchexec
     direnv
     pciutils
     libsForQt5.qt5ct
