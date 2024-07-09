@@ -66,7 +66,6 @@
       eval "$(fzf --zsh)"
     '';
 
-
     shellAliases = {
       code = "codium";
       nix-update = "sudo nixos-rebuild switch --flake ~/.config/kp/nixos/#default";
@@ -76,6 +75,7 @@
 
       # git
       g = "git";
+      lg = "lazygit";
 
       # npm package managers
       y = "yarn";
