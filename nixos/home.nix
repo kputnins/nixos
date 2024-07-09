@@ -239,8 +239,8 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "micro";
-    SUDO_EDITOR = "micro";
+    EDITOR = "nvim";
+    SUDO_EDITOR = "nvim";
 
     QT_QPA_PLATFORM = "wayland";
     QT_STYLE_OVERRIDE = "adwaita-dark";
