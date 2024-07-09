@@ -200,6 +200,42 @@
     '';
   };
 
+  # Zed settings
+  home.file.".config/zed/settings.json" = {
+    text = ''
+    // Zed settings
+    //
+    // For information on how to configure Zed, see the Zed
+    // documentation: https://zed.dev/docs/configuring-zed
+    //
+    // To see all of Zed's default settings without changing your
+    // custom settings, run the open default settings command
+    // from the command palette or from Zed application menu.
+    {
+      "base_keymap": "VSCode",
+      "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+      },
+      "vim_mode": true,
+      "ui_font_size": 16,
+      "buffer_font_size": 16,
+      "terminal": {
+        "font_family": "DejaVu Sans Mono",
+        "blinking": "on",
+        "font_size": 14,
+        "working_directory": "current_project_directory"
+      },
+      "project_panel": {
+        "git_status": true
+      },
+      "journal": {
+        "hour_format": "hour24"
+      }
+    }
+    '';
+  };
+
   # Flameshot options
   home.file.".config/flameshot/flameshot.conf" = {
     text = ''
