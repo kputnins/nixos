@@ -201,6 +201,7 @@
     wineWowPackages.stable
     winetricks
     protontricks
+    protonup-qt
     mangohud
     steam
     gamescope
