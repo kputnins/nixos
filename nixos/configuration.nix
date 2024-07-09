@@ -181,6 +181,7 @@
     home-manager
     nano
     micro
+    zed-editor
     clinfo
     eza
     bat
