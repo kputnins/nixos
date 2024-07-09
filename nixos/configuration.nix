@@ -257,23 +257,6 @@
   programs.corectrl.enable = true;
 
   programs.lazygit.enable = true;
-  programs.lazygit.settings = {
-    # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
-    os = {
-      editPreset = "nvim";
-    };
-    gui = {
-      nerdFontsVersion = "3";
-      showFileIcons = true;
-    };
-    git = {
-      parseEmoji = true;
-      paging = {
-        colorArg = "always";
-        pager = "delta --dark --paging=never";
-      };
-    };
-  };
 
   # LD fix
   programs.nix-ld.enable = true;

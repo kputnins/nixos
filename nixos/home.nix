@@ -236,6 +236,25 @@
     '';
   };
 
+  # Lazygit settings
+  home.file.".config/lazygit/config.yml" = {
+    text = ''
+    # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+    os:
+      editPreset: "nvim"
+
+    gui:
+      nerdFontsVersion: "3"
+      showFileIcons: true
+
+    git:
+      paging:
+        colorArg: always
+        pager: delta --dark --paging=never
+      parseEmoji: true
+    '';
+  };
+
   # Flameshot options
   home.file.".config/flameshot/flameshot.conf" = {
     text = ''
