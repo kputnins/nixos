@@ -191,6 +191,7 @@
     fzf
     zsh
     watchexec
+    mediainfo
     direnv
     pciutils
     libsForQt5.qt5ct
