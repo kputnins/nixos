@@ -110,7 +110,6 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Enable sound with pipewire
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
@@ -177,11 +176,13 @@
     gnomeExtensions.workspace-indicator
     gnomeExtensions.tactile
     efibootmgr
+    refind
     nixpkgs-fmt
     home-manager
     nano
     micro
     zed-editor
+    tldr
     clinfo
     eza
     bat
