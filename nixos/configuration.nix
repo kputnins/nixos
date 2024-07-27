@@ -13,6 +13,9 @@
       inputs.home-manager.nixosModules.default
     ];
 
+  # Use latest linux kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = false;
   boot.loader.grub.enable = true;
