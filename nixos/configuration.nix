@@ -179,6 +179,7 @@
     gnomeExtensions.workspace-indicator
     gnomeExtensions.tactile
     efibootmgr
+    lm_sensors
     refind
     nixpkgs-fmt
     home-manager
@@ -260,6 +261,7 @@
   programs.zsh.enable = true;
 
   programs.corectrl.enable = true;
+  programs.coolercontrol.enable = true;
 
   programs.lazygit.enable = true;
 
