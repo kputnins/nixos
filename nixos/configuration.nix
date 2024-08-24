@@ -91,22 +91,6 @@
     (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
   ];
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "lv";
-    variant = "apostrophe";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enables bluetooth
   hardware.bluetooth.enable = true;
@@ -116,19 +100,8 @@
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
   # Musnix for audio production
   # musnix.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kp = {
@@ -223,7 +196,6 @@
     x42-plugins
     helm
     krita
-    firefox
     (google-chrome.override {
       commandLineArgs = [
         "--enable-features=UseOzonePlatform"
@@ -247,30 +219,33 @@
     onlyoffice-bin
   ];
 
-  programs.dconf.enable = true;
-
-  programs.solaar.enable = true;
   hardware.logitech.wireless.enable = true;
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  programs = {
+    dconf.enable = true;
+
+    firefox.enable = true;
+
+    steam = {
+        enable = true;
+        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+        dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    };
+
+    zsh.enable = true;
+
+    corectrl.enable = true;
+    coolercontrol.enable = true;
+
+    lazygit.enable = true;
+
+    # LD fix
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [
+        # Add any missing dynamic libraries for unpackaged programs
+        # here, NOT in environment.systemPackages
+    ];
   };
-
-  programs.zsh.enable = true;
-
-  programs.corectrl.enable = true;
-  programs.coolercontrol.enable = true;
-
-  programs.lazygit.enable = true;
-
-  # LD fix
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-  ];
 
   # To get zsh tcompletion for system packages
   environment.pathsToLink = [ "/share/zsh" ];
@@ -289,6 +264,33 @@
         night = 2300;
       };
     };
+
+    # Enable the X11 windowing system.
+    xserver.enable = true;
+    xserver.videoDrivers = [ "amdgpu" ];
+
+    # Enable the GNOME Desktop Environment.
+    xserver.displayManager.gdm.enable = true;
+    xserver.desktopManager.gnome.enable = true;
+
+    # Configure keymap in X11
+    xserver.xkb = {
+      layout = "lv";
+      variant = "apostrophe";
+    };
+
+    # Enable CUPS to print documents.
+    printing.enable = true;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+
+    solaar.enable = true;
   };
 
   systemd.user.extraConfig = "DefaultLimitNOFILE=524288";
