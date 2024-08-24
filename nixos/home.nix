@@ -452,8 +452,8 @@
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
       ];
       favorite-apps = [
-        "google-chrome.desktop"
-        "codium.desktop"
+        "firefox.desktop"
+        "dev.zed.Zed.desktop"
         "org.gnome.Console.desktop"
         "org.gnome.Nautilus.desktop"
       ];
