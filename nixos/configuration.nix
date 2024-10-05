@@ -260,7 +260,7 @@
   services = {
     gnome.gnome-keyring.enable = true;
 
-    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+    udev.packages = with pkgs; [ gnome-settings-daemon ];
 
     redshift = {
       enable = true;
