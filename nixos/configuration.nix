@@ -2,16 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.nix-gc-env.nixosModules.default
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.nix-gc-env.nixosModules.default
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Use latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -35,7 +39,10 @@
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
@@ -88,9 +95,13 @@
   # Fonts
   fonts.packages = with pkgs; [
     # Use 'FiraMono Nerd Font' in terminals for icon symbol support
-    (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "FiraMono"
+      ];
+    })
   ];
-
 
   # Enables bluetooth
   hardware.bluetooth.enable = true;
@@ -107,27 +118,32 @@
   users.users.kp = {
     isNormalUser = true;
     description = "Kaspars Putniņš";
-    extraGroups = [ "networkmanager" "wheel" "corectrl" "audio" ];
-    packages = with pkgs; [
-      # user specific apckages
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "corectrl"
+      "audio"
     ];
   };
   users.users.liene = {
     isNormalUser = true;
     description = "Liene Putniņa";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      # user specific apckages
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
   };
   users.defaultUserShell = pkgs.zsh;
 
   # Home manager
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+    };
     backupFileExtension = "backup"; # Automatically backup files home-manager has confilcts with, instead of trhrowing an error
     users = {
-      "kp" = import ./home.nix;
+      "kp" = import ./users/kp.nix;
+      "liene" = import ./users/liene.nix;
     };
   };
 
@@ -179,6 +195,7 @@
     lazygit
     delta
     nodejs
+    nixfmt-rfc-style
     corepack
     p7zip
     wineWowPackages.stable
@@ -197,11 +214,6 @@
     lutris
     postman
     audacity
-    ardour
-    calf
-    tap-plugins
-    x42-plugins
-    helm
     krita
     (google-chrome.override {
       commandLineArgs = [
@@ -230,27 +242,23 @@
 
   programs = {
     dconf.enable = true;
-
     firefox.enable = true;
-
-    steam = {
-        enable = true;
-        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-        dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    };
-
     zsh.enable = true;
-
     corectrl.enable = true;
     coolercontrol.enable = true;
-
     lazygit.enable = true;
+
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    };
 
     # LD fix
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [
-        # Add any missing dynamic libraries for unpackaged programs
-        # here, NOT in environment.systemPackages
+      # Add any missing dynamic libraries for unpackaged programs
+      # here, NOT in environment.systemPackages
     ];
   };
 
@@ -260,8 +268,8 @@
   # List services that you want to enable:
   services = {
     gnome.gnome-keyring.enable = true;
-
     udev.packages = with pkgs; [ gnome-settings-daemon ];
+    solaar.enable = true;
 
     redshift = {
       enable = true;
@@ -296,15 +304,23 @@
       pulse.enable = true;
       jack.enable = true;
     };
-
-    solaar.enable = true;
   };
 
   systemd.user.extraConfig = "DefaultLimitNOFILE=524288";
 
   security.pam.loginLimits = [
-    { domain = "*"; item = "nofile"; type = "-"; value = "524288"; }
-    { domain = "*"; item = "memlock"; type = "-"; value = "524288"; }
+    {
+      domain = "*";
+      item = "nofile";
+      type = "-";
+      value = "524288";
+    }
+    {
+      domain = "*";
+      item = "memlock";
+      type = "-";
+      value = "524288";
+    }
   ];
 
   # Firewall

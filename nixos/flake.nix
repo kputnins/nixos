@@ -20,14 +20,23 @@
     };
   };
 
-  outputs = { self, nixpkgs, solaar, musnix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      solaar,
+      musnix,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
           ./configuration.nix
           solaar.nixosModules.default

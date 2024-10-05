@@ -15,142 +15,153 @@
 
   # The home.packages option allows you to install Nix packages into your environment.
   home.packages = with pkgs; [
+    ardour
+    calf
+    tap-plugins
+    x42-plugins
+    helm
     dconf
     showmethekey
     librecad
     corectrl
   ];
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    plugins = [
-      {
-        name = "vi-mode";
-        src = pkgs.zsh-vi-mode;
-        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-      }
-    ];
-
-    zplug = {
+  programs = {
+    zsh = {
       enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+
       plugins = [
-        { name = "zsh-users/zsh-autosuggestions"; }
-        { name = "mafredri/zsh-async"; }
-        { name = "sindresorhus/pure"; }
-        { name = "zsh-users/zsh-syntax-highlighting"; }
-        { name = "zap-zsh/sudo"; }
-        { name = "MichaelAquilina/zsh-you-should-use"; }
-        { name = "chivalryq/git-alias"; }
-        { name = "zap-zsh/completions"; }
-        { name = "Aloxaf/fzf-tab"; }
+        {
+          name = "vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
       ];
+
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "zsh-users/zsh-autosuggestions"; }
+          { name = "mafredri/zsh-async"; }
+          { name = "sindresorhus/pure"; }
+          { name = "zsh-users/zsh-syntax-highlighting"; }
+          { name = "zap-zsh/sudo"; }
+          { name = "MichaelAquilina/zsh-you-should-use"; }
+          { name = "chivalryq/git-alias"; }
+          { name = "zap-zsh/completions"; }
+          { name = "Aloxaf/fzf-tab"; }
+        ];
+      };
+
+      initExtra = ''
+        function zvm_after_init() {
+          zvm_bindkey viins '^@' autosuggest-accept
+          zvm_bindkey viins "^k" history-search-backward
+          zvm_bindkey viins "^j" history-search-forward
+          zvm_bindkey viins "^r" fzf-history-widget
+        }
+
+        zstyle ':completion::*:ls::*' fzf-completion-opts --preview='eval head {1}'
+        zstyle ':completion::*:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-completion-opts --preview='eval eval echo {1}'
+        zstyle ':completion::*:git::git,add,*' fzf-completion-opts --preview='git -c color.status=always status --short'
+        zstyle ':completion:*' menu no
+
+        eval "$(fzf --zsh)"
+      '';
+
+      shellAliases = {
+        code = "codium";
+        nix-update = "sudo nixos-rebuild test --flake ~/.config/kp/nixos/#default";
+        nix-update-save = "sudo nixos-rebuild switch --flake ~/.config/kp/nixos/#default";
+        nix-update-bootloader = "sudo nixos-rebuild --install-bootloader boot --flake ~/.config/kp/nixos/#default";
+        nix-clean = "nix-collect-garbage && sudo nixos-rebuild boot --flake ~/.config/kp/nixos/#default";
+        nix-gen-list = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+        nix-gen-clean = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d && nix-collect-garbage && sudo nixos-rebuild boot --flake ~/.config/kp/nixos/#default";
+
+        # git
+        g = "git";
+        lg = "lazygit";
+
+        # npm package managers
+        y = "yarn";
+        pp = "pnpm";
+        pps = "pnpm start";
+        ppi = "pnpm install";
+
+        # Colorize grep output (good for log files)
+        grep = "grep --color=auto";
+        egrep = "egrep --color=auto";
+        fgrep = "fgrep --color=auto";
+
+        # ls replacement
+        ls = "eza --icons=always";
+        lsa = "ls -al";
+        lsl = "ls -l";
+
+        # cat replacement
+        cat = "bat";
+
+        # htop replacement
+        htop = "btop";
+
+        # confirm before overwriting something
+        cp = "cp -i";
+        mv = "mv -i";
+        rm = "rm -i";
+
+        # easier to read disk
+        df = "df -h"; # human-readable sizes
+        free = "free -m"; # show sizes in MB
+      };
+
+      history.size = 10000;
+      history.path = "${config.xdg.dataHome}/zsh/history";
     };
 
-    initExtra = ''
-      function zvm_after_init() {
-        zvm_bindkey viins '^@' autosuggest-accept
-        zvm_bindkey viins "^k" history-search-backward
-        zvm_bindkey viins "^j" history-search-forward
-        zvm_bindkey viins "^r" fzf-history-widget
-      }
-
-      zstyle ':completion::*:ls::*' fzf-completion-opts --preview='eval head {1}'
-      zstyle ':completion::*:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-completion-opts --preview='eval eval echo {1}'
-      zstyle ':completion::*:git::git,add,*' fzf-completion-opts --preview='git -c color.status=always status --short'
-      zstyle ':completion:*' menu no
-
-      eval "$(fzf --zsh)"
-    '';
-
-    shellAliases = {
-      code = "codium";
-      nix-update = "sudo nixos-rebuild test --flake ~/.config/kp/nixos/#default";
-      nix-update-save = "sudo nixos-rebuild switch --flake ~/.config/kp/nixos/#default";
-      nix-update-bootloader = "sudo nixos-rebuild --install-bootloader boot --flake ~/.config/kp/nixos/#default";
-      nix-clean = "nix-collect-garbage && sudo nixos-rebuild boot --flake ~/.config/kp/nixos/#default";
-      nix-gen-list = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-      nix-gen-clean = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d && nix-collect-garbage && sudo nixos-rebuild boot --flake ~/.config/kp/nixos/#default";
-
-      # git
-      g = "git";
-      lg = "lazygit";
-
-      # npm package managers
-      y = "yarn";
-      pp = "pnpm";
-      pps = "pnpm start";
-      ppi = "pnpm install";
-
-      # Colorize grep output (good for log files)
-      grep = "grep --color=auto";
-      egrep = "egrep --color=auto";
-      fgrep = "fgrep --color=auto";
-
-      # ls replacement
-      ls = "eza --icons=always";
-      lsa = "ls -al";
-      lsl = "ls -l";
-
-      # cat replacement
-      cat = "bat";
-
-      # htop replacement
-      htop = "btop";
-
-      # confirm before overwriting something
-      cp = "cp -i";
-      mv = "mv -i";
-      rm = "rm -i";
-
-      # easier to read disk
-      df = "df -h"; # human-readable sizes
-      free = "free -m"; # show sizes in MB
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      extraConfig = ''
+        set number relativenumber
+      '';
     };
 
-    history.size = 10000;
-    history.path = "${config.xdg.dataHome}/zsh/history";
-  };
-
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    extraConfig = ''
-      set number relativenumber
-    '';
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "kputnins";
-    userEmail = "kaspars.putnins19@gmail.com";
-    extraConfig = {
-      push = { autoSetupRemote = true; };
+    git = {
+      enable = true;
+      userName = "kputnins";
+      userEmail = "kaspars.putnins19@gmail.com";
+      extraConfig = {
+        push = {
+          autoSetupRemote = true;
+        };
+      };
     };
-  };
 
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium.fhsWithPackages (ps: with ps; [
-      # Rust
-      rustup
-      zlib
-      # C++
-      gdb
-      gcc
-      clang
-      # python
-      python3
-    ]);
-  };
+    vscode = {
+      enable = true;
+      package = pkgs.vscodium.fhsWithPackages (
+        ps: with ps; [
+          # Rust
+          rustup
+          zlib
+          # C++
+          gdb
+          gcc
+          clang
+          # python
+          python3
+        ]
+      );
+    };
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   # Custom smplayer shortcut to wrapped smplayer
@@ -205,133 +216,144 @@
   # Zed settings
   home.file.".config/zed/settings.json" = {
     text = ''
-    // Zed settings
-    //
-    // For information on how to configure Zed, see the Zed
-    // documentation: https://zed.dev/docs/configuring-zed
-    //
-    // To see all of Zed's default settings without changing your
-    // custom settings, run the open default settings command
-    // from the command palette or from Zed application menu.
-    {
-      "base_keymap": "VSCode",
-      "telemetry": {
-        "diagnostics": false,
-        "metrics": false
-      },
-      "vim_mode": true,
-      "vim": {
-        "use_system_clipboard": "always"
-      },
-      "relative_line_numbers": true,
-      "ui_font_size": 16,
-      "buffer_font_size": 16,
-      "terminal": {
-        "font_family": "DejaVu Sans Mono",
-        "blinking": "on",
-        "font_size": 14,
-        "working_directory": "current_project_directory"
-      },
-      "project_panel": {
-        "git_status": true
-      },
-      "journal": {
-        "hour_format": "hour24"
+      // Zed settings
+      //
+      // For information on how to configure Zed, see the Zed
+      // documentation: https://zed.dev/docs/configuring-zed
+      //
+      // To see all of Zed's default settings without changing your
+      // custom settings, run the open default settings command
+      // from the command palette or from Zed application menu.
+      {
+        "base_keymap": "VSCode",
+        "telemetry": {
+          "diagnostics": false,
+          "metrics": false
+        },
+        "vim_mode": true,
+        "vim": {
+          "use_system_clipboard": "always"
+        },
+        "relative_line_numbers": true,
+        "ui_font_size": 16,
+        "buffer_font_size": 16,
+        "terminal": {
+          "font_family": "DejaVu Sans Mono",
+          "blinking": "on",
+          "font_size": 14,
+          "working_directory": "current_project_directory"
+        },
+        "project_panel": {
+          "git_status": true
+        },
+        "journal": {
+          "hour_format": "hour24"
+        }
       }
-    }
     '';
   };
 
   # Zed keymaps
   home.file.".config/zed/keymap.json" = {
     text = ''
-    // Zed keymap
-    //
-    // For information on binding keys, see the Zed
-    // documentation: https://zed.dev/docs/key-bindings
-    //
-    // To see the default key bindings run `zed: open default keymap`
-    // from the command palette.
-    [
-      // Restore typical keybindings
-      {
-        "context": "Editor && !menu",
-        "bindings": {
-          "ctrl-c": "editor::Copy", // vim default: return to normal mode
-          "ctrl-x": "editor::Cut", // vim default: decrement
-          "ctrl-v": "editor::Paste", // vim default: visual block mode
-          "ctrl-y": "editor::Undo", // vim default: line up
-          "ctrl-f": "buffer_search::Deploy", // vim default: page down
-          "ctrl-o": "workspace::Open", // vim default: go back
-          "ctrl-a": "editor::SelectAll" // vim default: increment
+      // Zed keymap
+      //
+      // For information on binding keys, see the Zed
+      // documentation: https://zed.dev/docs/key-bindings
+      //
+      // To see the default key bindings run `zed: open default keymap`
+      // from the command palette.
+      [
+        // Restore typical keybindings
+        {
+          "context": "Editor && !menu",
+          "bindings": {
+            "ctrl-c": "editor::Copy", // vim default: return to normal mode
+            "ctrl-x": "editor::Cut", // vim default: decrement
+            "ctrl-v": "editor::Paste", // vim default: visual block mode
+            "ctrl-y": "editor::Undo", // vim default: line up
+            "ctrl-f": "buffer_search::Deploy", // vim default: page down
+            "ctrl-o": "workspace::Open", // vim default: go back
+            "ctrl-a": "editor::SelectAll", // vim default: incrementof current word
+            "ctrl-d": ["editor::SelectNext", { "replace_newest": false }] // vim default: scroll down
+          }
+        },
+        {
+          "context": "Editor",
+          "bindings": {
+            "alt-[": "editor::Fold",
+            "alt-]": "editor::UnfoldLines"
+          }
+        },
+        // To navigate between the editor and docks (terminal, project panel, AI assistant, ...) just like you navigate between splits
+        {
+          "context": "Dock",
+          "bindings": {
+            "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
+            "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
+            "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
+            "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
+          }
+        },
+        {
+          "context": "Terminal",
+          "bindings": {
+            "ctrl-w": "pane::CloseActiveItem",
+            "ctrl-n": "workspace::NewTerminal"
+          }
+        },
+        // VIM keybin
+        {
+          "context": "VimControl",
+          "bindings": {
+            // Toggling buffers
+            "ctrl-w": "pane::CloseActiveItem",
+            "ctrl-shift-t": "pane::ReopenClosedItem",
+            // Navigating splits
+            "ctrl-{": "pane::ActivatePrevItem",
+            "ctrl-}": "pane::ActivateNextItem",
+            // Toggling docks
+            "ctrl-b": "workspace::ToggleLeftDock",
+            "ctrl-j": "workspace::ToggleBottomDock",
+            // Editing code
+            "ctrl-[": "editor::Outdent",
+            "ctrl-]": "editor::Indent",
+            // Scroll up and down
+            "super-u": "vim::ScrollUp",
+            "super-d": "vim::ScrollDown"
+          }
+        },
+        {
+          "context": "vim_mode == visual",
+          "bindings": {
+            "shift-s": [
+              "vim::PushOperator",
+              {
+                "AddSurrounds": {}
+              }
+            ]
+          }
         }
-      },
-      // To navigate between the editor and docks (terminal, project panel, AI assistant, ...) just like you navigate between splits
-      {
-        "context": "Dock",
-        "bindings": {
-          "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
-          "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
-          "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
-          "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
-        }
-      },
-      {
-        "context": "Terminal",
-        "bindings": {
-          "ctrl-w": "pane::CloseActiveItem",
-          "ctrl-n": "workspace::NewTerminal"
-        }
-      },
-      // VIM keybin
-      {
-        "context": "VimControl",
-        "bindings": {
-          // Toggling buffers
-          "ctrl-w": "pane::CloseActiveItem",
-          "ctrl-shift-t": "pane::ReopenClosedItem",
-          // Navigating splits
-          "ctrl-{": "pane::ActivatePrevItem",
-          "ctrl-}": "pane::ActivateNextItem",
-          // Toggling docks
-          "ctrl-b": "workspace::ToggleLeftDock",
-          "ctrl-j": "workspace::ToggleBottomDock",
-          // Editing code
-          "ctrl-[": "editor::Outdent",
-          "ctrl-]": "editor::Indent"
-        }
-      },
-      {
-        "context": "vim_mode == visual",
-        "bindings": {
-          "shift-s": [
-            "vim::PushOperator",
-            {
-              "AddSurrounds": {}
-            }
-          ]
-        }
-      }
-    ]
+      ]
     '';
   };
 
   # Lazygit settings
   home.file.".config/lazygit/config.yml" = {
     text = ''
-    # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
-    os:
-      editPreset: "nvim"
+      # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+      os:
+        editPreset: "nvim"
 
-    gui:
-      nerdFontsVersion: "3"
-      showFileIcons: true
+      gui:
+        nerdFontsVersion: "3"
+        showFileIcons: true
 
-    git:
-      paging:
-        colorArg: always
-        pager: delta --dark --paging=never
-      parseEmoji: true
+      git:
+        paging:
+          colorArg: always
+          pager: delta --dark --paging=never
+        parseEmoji: true
     '';
   };
 

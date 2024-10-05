@@ -16,7 +16,15 @@
       "ctrl-y": "editor::Undo", // vim default: line up
       "ctrl-f": "buffer_search::Deploy", // vim default: page down
       "ctrl-o": "workspace::Open", // vim default: go back
-      "ctrl-a": "editor::SelectAll" // vim default: increment
+      "ctrl-a": "editor::SelectAll", // vim default: incrementof current word
+      "ctrl-d": ["editor::SelectNext", { "replace_newest": false }] // vim default: scroll down
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-[": "editor::Fold",
+      "alt-]": "editor::UnfoldLines"
     }
   },
   // To navigate between the editor and docks (terminal, project panel, AI assistant, ...) just like you navigate between splits
@@ -51,7 +59,10 @@
       "ctrl-j": "workspace::ToggleBottomDock",
       // Editing code
       "ctrl-[": "editor::Outdent",
-      "ctrl-]": "editor::Indent"
+      "ctrl-]": "editor::Indent",
+      // Scroll up and down
+      "super-u": "vim::ScrollUp",
+      "super-d": "vim::ScrollDown"
     }
   },
   {
