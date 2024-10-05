@@ -68,7 +68,8 @@
 
     shellAliases = {
       code = "codium";
-      nix-update = "sudo nixos-rebuild switch --flake ~/.config/kp/nixos/#default";
+      nix-update = "sudo nixos-rebuild test --flake ~/.config/kp/nixos/#default";
+      nix-update-save = "sudo nixos-rebuild switch --flake ~/.config/kp/nixos/#default";
       nix-update-bootloader = "sudo nixos-rebuild --install-bootloader boot --flake ~/.config/kp/nixos/#default";
       nix-clean = "nix-collect-garbage && sudo nixos-rebuild boot --flake ~/.config/kp/nixos/#default";
       nix-gen-list = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
