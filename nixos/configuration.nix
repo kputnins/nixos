@@ -125,6 +125,7 @@
   # Home manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    backupFileExtension = "backup"; # Automatically backup files home-manager has confilcts with, instead of trhrowing an error
     users = {
       "kp" = import ./home.nix;
     };
