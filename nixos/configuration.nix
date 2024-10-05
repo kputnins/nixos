@@ -186,6 +186,12 @@
     protonup-qt
     mangohud
     steam
+    unzip
+    wget
+    xdotool
+    xorg.xwininfo
+    unixtools.xxd
+    steamtinkerlaunch
     gamescope
     lutris
     postman
