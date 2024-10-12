@@ -24,6 +24,7 @@
     showmethekey
     librecad
     corectrl
+    ollama-rocm
   ];
 
   programs = {
@@ -70,6 +71,9 @@
         zstyle ':completion:*' menu no
 
         eval "$(fzf --zsh)"
+
+        # TODO remove when deno 2.0 is available in nixOS
+        alias deno='~/.deno/bin/deno'
       '';
 
       shellAliases = {
