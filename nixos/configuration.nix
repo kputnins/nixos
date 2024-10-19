@@ -196,6 +196,7 @@
     lazygit
     delta
     nodejs
+    deno
     nixfmt-rfc-style
     corepack
     p7zip

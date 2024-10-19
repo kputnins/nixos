@@ -15,11 +15,6 @@
 
   # The home.packages option allows you to install Nix packages into your environment.
   home.packages = with pkgs; [
-    ardour
-    calf
-    tap-plugins
-    x42-plugins
-    helm
     dconf
     showmethekey
     librecad
@@ -71,9 +66,6 @@
         zstyle ':completion:*' menu no
 
         eval "$(fzf --zsh)"
-
-        # TODO remove when deno 2.0 is available in nixOS
-        alias deno='~/.deno/bin/deno'
       '';
 
       shellAliases = {
