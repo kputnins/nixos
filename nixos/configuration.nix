@@ -6,6 +6,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -261,6 +262,11 @@
       # here, NOT in environment.systemPackages
     ];
   };
+
+  # Copies the Zed settings from the home directory to the Zed config directory
+  system.activationScripts.copyZedConfig = lib.mkAfter ''
+    /home/kp/.config/kp/scipts/copy-zed-config.sh
+  '';
 
   # To get zsh tcompletion for system packages
   environment.pathsToLink = [ "/share/zsh" ];

@@ -1,3 +1,4 @@
+// https://github.com/kputnins/nixos/blob/master/.zed/settings.json
 // Zed settings
 //
 // For information on how to configure Zed, see the Zed
@@ -13,6 +14,10 @@
     "metrics": false
   },
   "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always"
+  },
+  "relative_line_numbers": true,
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "terminal": {
@@ -26,5 +31,16 @@
   },
   "journal": {
     "hour_format": "hour24"
+  },
+  "assistant": {
+    "default_model": {
+      "provider": "ollama",
+      "model": "llama3.1:latest"
+    },
+    "version": "2"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2
   }
 }

@@ -1,3 +1,4 @@
+// https://github.com/kputnins/nixos/blob/master/.zed/keymap.json
 // Zed keymap
 //
 // For information on binding keys, see the Zed
@@ -17,7 +18,12 @@
       "ctrl-f": "buffer_search::Deploy", // vim default: page down
       "ctrl-o": "workspace::Open", // vim default: go back
       "ctrl-a": "editor::SelectAll", // vim default: incrementof current word
-      "ctrl-d": ["editor::SelectNext", { "replace_newest": false }] // vim default: scroll down
+      "ctrl-d": [
+        "editor::SelectNext",
+        {
+          "replace_newest": false
+        }
+      ] // vim default: scroll down
     }
   },
   {
@@ -31,10 +37,22 @@
   {
     "context": "Dock",
     "bindings": {
-      "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
+      "ctrl-w h": [
+        "workspace::ActivatePaneInDirection",
+        "Left"
+      ],
+      "ctrl-w l": [
+        "workspace::ActivatePaneInDirection",
+        "Right"
+      ],
+      "ctrl-w k": [
+        "workspace::ActivatePaneInDirection",
+        "Up"
+      ],
+      "ctrl-w j": [
+        "workspace::ActivatePaneInDirection",
+        "Down"
+      ]
     }
   },
   {
