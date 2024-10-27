@@ -20,6 +20,7 @@
     librecad
     corectrl
     ollama-rocm
+    darktable
   ];
 
   programs = {
