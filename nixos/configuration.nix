@@ -173,6 +173,7 @@
     lm_sensors
     refind
     nixpkgs-fmt
+    nixd
     home-manager
     nano
     micro
