@@ -110,7 +110,7 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  # Enable sound with pipewire
+  # To enable sound with pipewire
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
@@ -307,6 +307,7 @@
     # Enable CUPS to print documents.
     printing.enable = true;
 
+    # To enable sound with pipewire
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -314,6 +315,13 @@
       pulse.enable = true;
       jack.enable = true;
     };
+  };
+
+  # Theme Qt applications to have a look similar to the GNOME desktop, using a dark theme.
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
   };
 
   systemd.user.extraConfig = "DefaultLimitNOFILE=524288";
