@@ -95,6 +95,8 @@
 
   # Fonts
   fonts.packages = with pkgs; [
+    # Liberation Fonts, replacements for Times New Roman, Arial, and Courier New
+    liberation_ttf
     # Use 'FiraMono Nerd Font' in terminals for icon symbol support
     (nerdfonts.override {
       fonts = [
