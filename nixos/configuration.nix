@@ -93,17 +93,16 @@
     LC_TIME = "lv_LV.UTF-8";
   };
 
+  # Increase download buffer size to enable faster downloads
+  nix.settings.download-buffer-size = "200M";
+
   # Fonts
   fonts.packages = with pkgs; [
     # Liberation Fonts, replacements for Times New Roman, Arial, and Courier New
     liberation_ttf
     # Use 'FiraMono Nerd Font' in terminals for icon symbol support
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "FiraMono"
-      ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
   ];
 
   # Enables bluetooth
