@@ -285,6 +285,9 @@
 
     # VS Code on wayland
     NIXOS_OZONE_WL = "1";
+
+    # Increase UI size of steam
+    STEAM_FORCE_DESKTOPUI_SCALING = "1.25";
   };
 
   # Gnome dconf settings
